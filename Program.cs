@@ -13,7 +13,8 @@ namespace CRUDoperations.Controllers
         private TestDBEntities db = new TestDBEntities();  
         public ActionResult Index()  
         {  
-            return View(db.EMPLOYEEs.ToList());  
+            return View(db.EMPLOYEEs.ToList());
+            MessageBox.Show("processed correctly");  
         }  
         public ActionResult Details(string id = null)  
        {  
@@ -22,11 +23,13 @@ namespace CRUDoperations.Controllers
             {  
                 return HttpNotFound();  
             }  
-            return View(employee);  
+            return View(employee);
+            MessageBox.Show("processed correctly");  
         }  
         public ActionResult Create()  
         {  
             return View();  
+            MessageBox.Show("processed correctly");
         }  
         [HttpPost]  
         [ValidateAntiForgeryToken]  
@@ -36,10 +39,12 @@ namespace CRUDoperations.Controllers
             {  
                 db.EMPLOYEEs.Add(employee);  
                 db.SaveChanges();  
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index"); 
+                MessageBox.Show("processed correctly"); 
             }  
   
-            return View(employee);  
+            return View(employee); 
+            MessageBox.Show("processed correctly"); 
         }  
         public ActionResult Edit(string id = null)  
         {  
@@ -47,8 +52,10 @@ namespace CRUDoperations.Controllers
             if (employee == null)  
             {  
                 return HttpNotFound();  
+                MessageBox.Show("processed incorrectly");
             }  
             return View(employee);  
+            MessageBox.Show("processed correctly");
         }  
 
         [HttpPost]  
@@ -59,9 +66,11 @@ namespace CRUDoperations.Controllers
             {  
                 db.Entry(employee).State = EntityState.Modified;  
                 db.SaveChanges();  
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index"); 
+                MessageBox.Show("processed correctly"); 
             }  
             return View(employee);  
+            MessageBox.Show("processed correctly");
         }  
         public ActionResult Delete(string id = null)  
         {  
@@ -69,8 +78,10 @@ namespace CRUDoperations.Controllers
             if (employee == null)  
             {  
                 return HttpNotFound();  
+                MessageBox.Show("processed incorrectly");
             }  
-            return View(employee);  
+            return View(employee); 
+            MessageBox.Show("processed correctly"); 
         }  
   
         [HttpPost, ActionName("Delete")]  
@@ -80,7 +91,7 @@ namespace CRUDoperations.Controllers
             EMPLOYEE employee = db.EMPLOYEEs.Find(id);  
             db.EMPLOYEEs.Remove(employee);  
             db.SaveChanges();  
-            return RedirectToAction("Index");  
+            return RedirectToAction("Index");MessageBox.Show("processed correctly"); 
         }  
   
         protected override void Dispose(bool disposing)  
@@ -90,6 +101,8 @@ namespace CRUDoperations.Controllers
         }  
     }  
 }  
+
+
 
 // using System;  
 // using System.Collections.Generic;  
